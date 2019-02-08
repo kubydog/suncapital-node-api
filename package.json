@@ -1,0 +1,8 @@
+{
+  "name": "suncapital-node-api",
+  "version": "1.0.0",
+  "description": "NodeJS + MongoDB API for suncapital client management system",
+  "dependencies": {
+    
+  }
+}
