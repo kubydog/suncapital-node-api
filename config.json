@@ -1,0 +1,4 @@
+{
+  "secret": "Suncapital Secret",
+  "mongoConnetion": "mongodb://suncapital:123456@localhost/suncapital"
+}
