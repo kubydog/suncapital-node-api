@@ -1,7 +1,7 @@
-const config = require('../config');
+const config = require('../config/config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const db = require('../db');
+const db = require('../config/db');
 const User = db.User;
 
 async function getById(id) {
@@ -29,14 +29,34 @@ async function authenticate({email, password}) {
         return {
             ...userWithoutPassword,
             token
-        }
+        };
+    }
+}
+
+async function getUserbyToken(token) {
+    console.log("authorization: " + token);
+    console.log("Toke: " + token.slice(7));
+    const _id = jwt.decode(token.slice(7), config.secret);
+    console.log('_id: ' + _id);
+    if (_id) {
+        return await getById(_id.sub);
+    }
+    throw "Token: " + token + "is invalid";
+}
+
+async function getUserById(_id) {
+    const user = await User.findOne({_id: _id});
+    if (user) {
+        const { password, createDate, ...userDetails } = user.toObject();
+        return { ...userDetails };
     }
 }
 
 module.exports = {
     getById,
     register,
-    authenticate
+    authenticate,
+    getUserbyToken
 }
 
 
