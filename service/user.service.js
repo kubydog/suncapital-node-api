@@ -34,10 +34,7 @@ async function authenticate({email, password}) {
 }
 
 async function getUserbyToken(token) {
-    console.log("authorization: " + token);
-    console.log("Toke: " + token.slice(7));
     const _id = jwt.decode(token.slice(7), config.secret);
-    console.log('_id: ' + _id);
     if (_id) {
         return await getById(_id.sub);
     }

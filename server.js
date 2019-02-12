@@ -12,6 +12,7 @@ app.use(cors());
 app.use(jwt());
 
 app.use('/user', require('./controller/user.controller'));
+app.use('/client', require('./controller/client.controller'));
 app.use(errorHandler);
 
 const port = 4000;

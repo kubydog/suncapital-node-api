@@ -15,14 +15,12 @@ function register(req, res, next) {
 }
 
 function authenticate(req, res, next) {
-    console.log(req.body);
     userService.authenticate(req.body)
         .then(user => user? res.json(user) : res.status(400).json({message: 'Username or password is incorrect'}))
         .catch(err => next(err));
 }
 
 function getUserByToken(req, res, next) {
-    console.log(req.headers['authorization']);
     userService.getUserbyToken(req.headers['authorization'])
         .then(user => user? res.json(user) : res.status(400).json({message: 'User is not authenicated'}))
         .catch(err =>next(err));
