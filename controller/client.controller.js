@@ -4,7 +4,7 @@ const clientService = require('../service/client.service');
 
 router.post('/add', addClient);
 router.put('/:id', editClient);
-router.get('/search', findClient);
+router.get('/clients', findClient);
 router.get('/:id', findClientById);
 
 function addClient(req, res, next) {
