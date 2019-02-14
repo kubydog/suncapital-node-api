@@ -40,9 +40,18 @@ async function findClient(query) {
     return await Client.find(query)
 }
 
+async function _delete(id) {
+    const client = await getById(id);
+    if (client) {
+        await client.remove();
+    }
+    return id;
+}
+
 module.exports = {
     addClient,
     editClient,
     findClient,
-    getById
+    getById,
+    _delete
 }

@@ -6,6 +6,7 @@ router.post('/add', addClient);
 router.put('/edit/:id', editClient);
 router.get('/clients', findClient);
 router.get('/:id', findClientById);
+router.delete('/:id', _delete);
 
 function addClient(req, res, next) {
     clientService.addClient(req.body)
@@ -30,6 +31,13 @@ function findClientById(req, res, next) {
     clientService.getById(req.params.id)
         .then( doc => doc? res.json(doc) : res.status(500).json({message: 'Failed to get Client'}))
         .catch( err => next(err));
+}
+
+function _delete(req, res, next) {
+    console.log(req.params.id);
+    clientService._delete(req.params.id)
+        .then( id => id? res.json({_id: id}) : res.json({_id: ''}))
+        .catch( err => next(err))
 }
 
 module.exports = router;
