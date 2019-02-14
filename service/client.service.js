@@ -21,15 +21,19 @@ async function addClient(clientParam) {
     }
 }
 
-async function editClient(id, clientParam) {
-    const client = await Client.getById(id);
+async function editClient(clientParam) {
+    const client = await getById(clientParam._id);
     if (!client) {
         throw "Client is not found";
     }
     Object.assign(client, clientParam);
-    await client.save(function (err, doc) {
-        return doc;
-    });
+    try {
+        const doc = await client.save();
+        return clientParam._id;
+    }
+    catch(err) {
+        throw "Edit Client Exception";
+    }
 }
 
 async function findClient(query) {

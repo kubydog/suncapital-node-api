@@ -3,7 +3,7 @@ const router = express.Router();
 const clientService = require('../service/client.service');
 
 router.post('/add', addClient);
-router.put('/:id', editClient);
+router.put('/edit/:id', editClient);
 router.get('/clients', findClient);
 router.get('/:id', findClientById);
 
@@ -14,8 +14,8 @@ function addClient(req, res, next) {
 }
 
 function editClient(req, res, next) {
-    clientService.editClient(req.params.id, req.body)
-        .then(doc => doc? res.json(doc) : res.status(500).json({message: 'Failed to update client'}))
+    clientService.editClient(req.body)
+        .then( id => id? res.json({_id: id}) : res.status(500).json({message: 'Failed to update client'}))
         .catch(err => next(err));
 }
 
