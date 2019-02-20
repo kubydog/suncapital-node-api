@@ -1,5 +1,7 @@
 const db = require('../config/db');
 const Client = db.Client;
+const accountService = require('./account.service');
+const ClientWithAccount = require('../model/clientWithAccount');
 
 async function getById(id) {
     console.log('Get Client Id ' + id);
@@ -47,10 +49,18 @@ async function _delete(id) {
     return id;
 }
 
+async function getClientDetail(id) {
+    const client = await getById(id);
+    const accounts = await accountService.getAccountsByClientId(id);
+    const clientWithAccount = new ClientWithAccount(client, accounts);
+    return clientWithAccount;
+}
+
 module.exports = {
     addClient,
     editClient,
     findClient,
     getById,
-    _delete
+    _delete,
+    getClientDetail
 }

@@ -28,7 +28,7 @@ function findClient(req, res, next) {
 
 function findClientById(req, res, next) {
     console.log(req.params.id);
-    clientService.getById(req.params.id)
+    clientService.getClientDetail(req.params.id)
         .then( doc => doc? res.json(doc) : res.status(500).json({message: 'Failed to get Client'}))
         .catch( err => next(err));
 }
