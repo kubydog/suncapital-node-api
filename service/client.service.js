@@ -1,5 +1,4 @@
 const db = require('../config/db');
-const mongoose = require('mongoose')
 const Client = db.Client;
 
 async function getById(id) {
