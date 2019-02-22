@@ -24,8 +24,24 @@ async function getAccountsByClientId(clientId) {
     return await Account.find({clientId: clientId});
 }
 
+async function edit(accountParams) {
+    const account = await getById(accountParams._id);
+    if (!account) {
+        throw 'Account is not found';
+    }
+    Object.assign(account, accountParams);
+    try {
+        const doc = await account.save();
+        return doc;
+    }
+    catch (err) {
+        throw 'Edit Account Exception';
+    }
+}
+
 module.exports = {
     getById,
     add,
-    getAccountsByClientId
+    getAccountsByClientId,
+    edit
 }
