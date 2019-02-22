@@ -39,9 +39,19 @@ async function edit(accountParams) {
     }
 }
 
+async function _delete(id) {
+    const account = await getById(id);
+    if (!account) {
+        throw 'Account Id is not existed';
+    }
+    await account.remove();
+    return id;
+}
+
 module.exports = {
     getById,
     add,
     getAccountsByClientId,
-    edit
+    edit,
+    _delete
 }

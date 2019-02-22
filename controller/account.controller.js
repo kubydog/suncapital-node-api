@@ -5,6 +5,7 @@ const accountService = require('../service/account.service');
 router.post('/add', add);
 router.get('/:clientId', getAccountsByClientId);
 router.put('/:id', edit);
+router.delete('/:id', _delete);
 
 function add(req, res, next) {
     accountService.add(req.body)
@@ -21,6 +22,12 @@ function getAccountsByClientId(req, res, next) {
 function edit(req, res, next) {
     accountService.edit(req.body)
         .then( doc => doc? res.json(doc) : res.status(500).json({message: 'Failed to edit account'}))
+        .catch( err => next(err));
+}
+
+function _delete(req, res, next) {
+    accountService._delete(req.params.id)
+        .then( id => id? res.json({id: id}) : res.status(500).json({message: 'Failed to delete account'}))
         .catch( err => next(err));
 }
 
