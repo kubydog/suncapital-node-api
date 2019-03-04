@@ -20,6 +20,7 @@ const schema = new Schema({
     payCurrency: {type: String, required: true},
     fee: {type: Number},
     createDate: {type: Date, default: Date.now},
-    no: {type: String, required: true}
+    no: {type: String, required: true},
+    receiverAddress: {type: String}
 });
 module.exports = mongoose.model('transaction', schema);

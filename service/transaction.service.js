@@ -23,6 +23,11 @@ function generateNo() {
     return no;
 }
 
+async function getById(id) {
+    return await Transaction.findById(id);
+}
+
 module.exports = {
-    add
+    add,
+    getById
 }
