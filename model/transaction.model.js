@@ -19,6 +19,7 @@ const schema = new Schema({
     payAmount: {type: Number, required: true},
     payCurrency: {type: String, required: true},
     fee: {type: Number},
-    createDate: {type: Date, default: Date.now}
+    createDate: {type: Date, default: Date.now},
+    no: {type: String, required: true}
 });
 module.exports = mongoose.model('transaction', schema);
