@@ -27,7 +27,12 @@ async function getById(id) {
     return await Transaction.findById(id);
 }
 
+async function findTransactions(query) {
+    return await Transaction.find(query);
+}
+
 module.exports = {
     add,
-    getById
+    getById,
+    findTransactions
 }
