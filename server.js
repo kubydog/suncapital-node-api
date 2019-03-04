@@ -14,6 +14,7 @@ app.use(jwt());
 app.use('/user', require('./controller/user.controller'));
 app.use('/client', require('./controller/client.controller'));
 app.use( '/account', require('./controller/account.controller'));
+app.use( '/transaction', require('./controller/transaction.controller'));
 app.use(errorHandler);
 
 const port = 4000;

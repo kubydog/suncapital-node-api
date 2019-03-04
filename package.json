@@ -19,6 +19,7 @@
     "jsonwebtoken": "^8.4.0",
     "mongodb": "^3.1.13",
     "mongoose": "^5.4.11",
+    "mongoose-id-autoinc": "^2013.7.14-4",
     "rootpath": "^0.1.2"
   },
   "devDependencies": {

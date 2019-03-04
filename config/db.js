@@ -5,5 +5,6 @@ mongoose.connect(config.mongoConnetion);
 module.exports= {
     User: require('../model/user.model'),
     Client: require('../model/client.model'),
-    Account: require('../model/account.model')
+    Account: require('../model/account.model'),
+    Transaction: require('../model/transaction.model')
 }
