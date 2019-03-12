@@ -5,6 +5,7 @@ const schema = new Schema({
     accountName: {type: String, required: true},
     accountNumber: {type: String, required: true},
     bank: {type: String, required: true},
+    receiverAddress: {type: String},
     clientId: {type: String, required: true}
 });
 
